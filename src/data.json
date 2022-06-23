@@ -1,0 +1,36 @@
+[{
+    "codigo": 1,
+    "nombre": "Coca-Cola",
+    "stock": 4,
+    "disponibilidad": true,
+    "precio": 1500
+},
+{
+    "codigo": 2,
+    "nombre": "Pepsi",
+    "stock": 2,
+    "disponibilidad": true,
+    "precio": 1000
+},
+{
+    "codigo": 3,
+    "nombre": "Bilz y Pap",
+    "stock": 65,
+    "disponibilidad": true,
+    "precio": 1000
+},
+{
+    "codigo": 4,
+    "nombre": "Limon Soda",
+    "stock": 11,
+    "disponibilidad": true,
+    "precio": 900
+},
+{
+    "codigo": 5,
+    "nombre": "Fanta",
+    "stock": 0,
+    "disponibilidad": false,
+    "precio": 1000
+}
+]
