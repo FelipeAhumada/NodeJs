@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-
+var cassandra = require('cassandra-driver');
 //Configuracion del servidor , variables globales. process.env.port == Si existe algun puerto definido este lo tomará en caso contrario
 //SErá el puerto 3000
 app.set('port', process.env.port || 3000);
@@ -20,11 +20,24 @@ app.use(express.urlencoded({extend: 'false'}));
 app.use(express.json());
 
 
+// Realizamos la conexión a la base de datos cassandra
+
+// Remplazamos 'Username' and 'Password' con los username y password de tu cluster
+let authProvider = new cassandra.auth.PlainTextAuthProvider('Username', 'Password');
+// Remplazamos 'ClusterIP' con la IP de tu cluster
+let contactPoints = ['PublicIP1','PublicIP2','PublicIP3'];
+// Remplazamos el datacenter con el nombre de tu datacenter ejemplo si estas en la nuve seria algo como aws-us-east-1
+let localDataCenter = 'DataCenter';
+//Conecta a la base de datos con las variables indicadas.
+let client = new cassandra.Client({contactPoints: contactPoints, authProvider: authProvider, localDataCenter: localDataCenter, keyspace:'grocery'});
+
 
 
 //Routes del servidor 
 app.use(require('./routes/index'))
-app.use(require('./routes/productos'))
+//Llamamos a los ramos
+app.use(require('./routes/ramos.js'))
+
 
 
 
